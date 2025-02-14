@@ -36,22 +36,57 @@
 
 1. Clone or unzip the repository
 
+```
+git clone https://github.com/yourusername/airline-tweet-extractor.git
+```
+
 2. Install dependencies:
 
-bash
+Run the setup script:
+
+```
+./setup.sh
+```
+
+This will install the dependencies and set up the environment. As long as you have the prerequisites installed, you should be able to run all setup scripts successfully. The setup script will also prompt you to enter your OpenAI API key, which will be saved in the `.env` file. The repository includes a `.env.example` file that shows the required variables and is set to ignore the `.env` file by default.
+
+Alternatively, you can install the dependencies manually:
+
+```
+cd backend
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
+```
 
-3. Set up your OpenAI API key:
+Then create your `.env` file:
 
-bash
-export OPENAI_API_KEY='your-api-key'
+```
+cp .env.example .env
+```
+
+Edit the `.env` file with your OpenAI API key:
+
+```
+OPENAI_API_KEY=your-api-key
+```
 
 ## Usage
 
 Run the extraction tool using the shell script:
 
-bash
+```
 ./run_extraction.sh
+```
+
+This will give you the ability to select a dataset, and your method of choice. It also gives you the option to write a single tweet prompt and verify the results for test. You will be able to see the accuracy, cost, and time taken for each method and run comparison across all methods. The command line tool will prompt you to:
+
+1. Select a dataset
+2. Select a method
+3. Optional: Write a single tweet prompt and verify the results for test
+4. Optional: Run comparison across all methods
+5. See the accuracy, cost, and time taken for each method
+6. See the comparison summary
 
 ### Available Options
 
@@ -86,3 +121,5 @@ Results are saved in the `output` directory with:
 ## Logs
 
 Logs are stored in the `logs` directory with timestamps for tracking and debugging.
+
+For a video walkthrough of the tool, please see the video here: https://www.loom.com/share/2e9196cdc6b445ad800a436456586a0f?sid=9f7289a4-7504-4772-aa01-6589f3cb2b0b
