@@ -1,36 +1,15 @@
 ## Architecture
 
 - `src/` - Core source code
-  - `extractors/` - Different extraction implementations
-    - `zero_shot.py` - Zero-shot classification using OpenAI
-    - `few_shot.py` - Few-shot learning implementation
-    - `fine_tuned.py` - Custom model handling
+  - `extract/` - Different extraction implementations
+    - `prompt_based.py` - Prompt-based extraction (zero-shot, one-shot, few-shot)
+    - `embeddings.py` - Embeddings extraction
+    - `fine_tuned.py` - Trains and uses a fine-tuned model
+    - `zero_shot.py` - Zero-shot classification using OpenAI (deprecated)
+    - `few_shot.py` - Few-shot learning implementation (deprecated)
+    - `fine_tuned.py` - Custom model handling (deprecated)
   - `pipeline/` - Main processing pipeline
   - `utils/` - Helper functions and utilities
-
-## Features
-
-### Extraction Methods
-
-- **Zero-shot Classification**
-  - Uses OpenAI's GPT-4 for direct classification
-  - No training examples required
-  - Configurable classification parameters
-- **Few-shot Learning**
-  - Leverages example-based learning
-  - Customizable prompt templates
-  - Dynamic example selection
-- **Fine-tuned Models**
-  - Custom models trained on airline data
-  - Support for multiple model architectures
-  - Model versioning and management
-
-### Analysis Components
-
-- Airline mention extraction
-- Sentiment analysis (Positive/Negative/Neutral)
-- Confidence scoring
-- Entity relationship mapping
 
 ## Setup
 
