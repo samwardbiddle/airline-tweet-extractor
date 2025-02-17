@@ -73,34 +73,84 @@ OPENAI_API_KEY=your-api-key
 
 ## Usage
 
-Run the extraction tool using the shell script:
+The tool provides a simple command-line interface to experiment with different OpenAI API approaches for extracting airline names from tweets.
 
-```
+### Quick Start
+
+1. Run the extraction script:
+
+```bash
 ./run_extraction.sh
 ```
 
-This will give you the ability to select a dataset, and your method of choice. It also gives you the option to write a single tweet prompt and verify the results for test. You will be able to see the accuracy, cost, and time taken for each method and run comparison across all methods. The command line tool will prompt you to:
+This interactive tool will guide you through:
 
-1. Select a dataset
-2. Select a method
-3. Optional: Write a single tweet prompt and verify the results for test
-4. Optional: Run comparison across all methods
-5. See the accuracy, cost, and time taken for each method
-6. See the comparison summary
+1. Selecting a dataset from the `data/` directory
+2. Choosing an extraction method
+3. Optionally writing a single tweet prompt to verify results
+4. Optionally running a comparison across all methods
+5. Viewing accuracy, cost, and time metrics for each method
+6. Reviewing a comparison summary
 
-### Available Options
+### Analyzing Results
 
-1. **Select Dataset**: Choose from available CSV files in the data directory
-2. **Choose Method**:
+To analyze the performance of different methods:
 
-   - Zero-shot: Direct extraction without examples
-   - One-shot: Uses a single example
-   - Few-shot: Uses multiple examples
-   - Embeddings: Uses embedding similarity
-   - Fine-tuned: Uses a custom-trained model
-   - Compare All: Runs all methods and compares results
+```bash
+./analyze_results.sh
+```
 
-3. **View Results**: See detailed extraction results and accuracy metrics
+This will:
+
+- Analyze extraction failures
+- Suggest prompt improvements
+- Generate detailed performance metrics
+- Save results to the `output/` directory
+
+### Output and Logs
+
+Each run creates:
+
+- A detailed log file in `logs/` with timestamps
+- Results in `output/` including:
+  - Extraction results
+  - Accuracy metrics
+  - Method comparisons
+  - Cost analysis
+
+### Available Methods
+
+1. **Zero-shot**: Direct extraction without examples
+
+   - Fastest and most token-efficient
+   - Lower accuracy for specialized tasks
+   - Lowest cost per API call
+
+2. **One-shot**: Uses a single example
+
+   - Balanced approach
+   - Moderate token usage
+   - Improved accuracy over zero-shot
+
+3. **Few-shot**: Uses multiple examples
+
+   - Better handling of edge cases
+   - Higher token usage
+   - Good accuracy for specific tasks
+
+4. **Embeddings**: Uses semantic similarity
+
+   - Good for fuzzy matching
+   - Efficient for known airline lists
+   - Moderate cost and accuracy
+
+5. **Fine-tuned**: Uses custom-trained model
+   - Highest accuracy
+   - Initial training investment (30min-several hours)
+   - Most cost-effective for large-scale use
+   - Recommended for production use
+
+For a video walkthrough of the tool, see: [Demo Video](https://www.loom.com/share/2e9196cdc6b445ad800a436456586a0f?sid=9f7289a4-7504-4772-aa01-6589f3cb2b0b)
 
 ## Fine-tuned Models
 
@@ -121,5 +171,3 @@ Results are saved in the `output` directory with:
 ## Logs
 
 Logs are stored in the `logs` directory with timestamps for tracking and debugging.
-
-For a video walkthrough of the tool, please see the video here: https://www.loom.com/share/2e9196cdc6b445ad800a436456586a0f?sid=9f7289a4-7504-4772-aa01-6589f3cb2b0b
